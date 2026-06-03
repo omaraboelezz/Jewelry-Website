@@ -227,10 +227,10 @@ const Header = ({
 
               <img
                 src={LogoImage}
-                alt="El-Saudi Jewelry"
+                alt="Jawhara Gold"
                 className="header-logo-img"
               />
-              <h1 className="header-logo-text">El-Saudi jewelry</h1>
+              <h1 className="header-logo-text">Jawhara Gold</h1>
             </div>
           )}
 
@@ -470,7 +470,7 @@ const Header = ({
           {/* Panel */}
           <div className="mobile-drawer-panel" dir={isRtl ? "rtl" : "ltr"}>
             <div className="drawer-header">
-              <span className="drawer-brand">El-Saudi</span>
+              <span className="drawer-brand"></span>
               <button
                 className="drawer-close"
                 onClick={closeDrawer}

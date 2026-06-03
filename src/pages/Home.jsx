@@ -131,7 +131,7 @@ const Home = ({ language, onLanguageChange, navigate }) => {
   };
 
   const handleContactClick = (product) => {
-    const phoneNumber = '201067365567';
+    const phoneNumber = '201276898650';
 
     const helloText =
       language === 'ar'
@@ -210,7 +210,7 @@ const Home = ({ language, onLanguageChange, navigate }) => {
       {showSplash && (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 99999, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 255, 255, 0.95)', backdropFilter: 'blur(5px)', transition: 'opacity 0.3s ease-out' }}>
           <div className="loader-ring"></div>
-          <div className="loader-logo">El-Saudi Jewelry</div>
+          <div className="loader-logo">Jawhara Gold</div>
         </div>
       )}
 

@@ -26,7 +26,7 @@ interface FooterProps {
 const Footer = ({ language = 'ar' }: FooterProps) => {
   const texts: Texts = {
     ar: {
-      tagline: 'أناقة خالدة في كل قطعة',
+      tagline: 'قطعة تحمل قصة جمالك',
       quickLinks: 'روابط سريعة',
       home: 'الرئيسية',
       features: 'المميزات',
@@ -38,7 +38,7 @@ const Footer = ({ language = 'ar' }: FooterProps) => {
       allRightsReserved: 'جميع الحقوق محفوظة'
     },
     en: {
-      tagline: 'Timeless Elegance in Every Piece',
+      tagline: 'Every Piece Tells Your Story',
       quickLinks: 'Quick Links',
       home: 'Home',
       features: 'Features',
@@ -70,7 +70,7 @@ const Footer = ({ language = 'ar' }: FooterProps) => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <h3 className="footer-title">El-Saudi jewelry</h3>
+          <h3 className="footer-title">Jawhara Gold</h3>
           <p className="footer-tagline">{t.tagline}</p>
         </div>
 
@@ -94,8 +94,8 @@ const Footer = ({ language = 'ar' }: FooterProps) => {
           <h4 className="footer-heading">{t.contact}</h4>
           <p className="footer-text">
             {t.phone}{' '}
-            <a href="tel:+201067365567" className="footer-phone-link">
-              +201067365567
+            <a href="tel:+201276898650" className="footer-phone-link">
+              +201276898650
             </a>
           </p>
 
@@ -123,7 +123,7 @@ const Footer = ({ language = 'ar' }: FooterProps) => {
                 <FaFacebookF size={24} />
               </a>
               <a
-                href="https://wa.me/201067365567"
+                href="https://wa.me/201276898650"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link whatsapp"
@@ -137,7 +137,7 @@ const Footer = ({ language = 'ar' }: FooterProps) => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} El-Saudi jewelry | {t.allRightsReserved}.</p>
+        <p>&copy; {new Date().getFullYear()} Jawhara Gold | {t.allRightsReserved}.</p>
       </div>
     </footer>
   );

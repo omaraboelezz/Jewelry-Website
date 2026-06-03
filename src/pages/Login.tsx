@@ -21,7 +21,7 @@ const Login = ({ onLogin, language, onLanguageChange }: LoginProps) => {
   const texts = {
     ar: {
       title: 'تسجيل الدخول',
-      subtitle: 'لوحة التحكم - El-Saudi jewelry',
+      subtitle: 'لوحة التحكم - Jawhara Gold',
       username: 'اسم المستخدم',
       password: 'كلمة المرور',
       login: 'دخول',
@@ -32,7 +32,7 @@ const Login = ({ onLogin, language, onLanguageChange }: LoginProps) => {
     },
     en: {
       title: 'Login',
-      subtitle: 'Admin Panel - El-Saudi jewelry',
+      subtitle: 'Admin Panel - Jawhara Gold',
       username: 'Username',
       password: 'Password',
       login: 'Login',

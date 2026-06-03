@@ -102,7 +102,7 @@ const CartModal: React.FC<CartModalProps> = ({
       connectToBuy: "اطلب عبر واتساب",
       removeFromCart: "إزالة من السلة",
       closeCart: "إغلاق السلة",
-      whatsappMessage: "مرحباً، أود طلب العناصر التالية من El-Saudi jewelry:",
+      whatsappMessage: "مرحباً، أود طلب العناصر التالية من Jawhara Gold:",
       productDeleted: "هذا المنتج تم حذفه",
       cleanDeletedItems: "إزالة المنتجات المحذوفة",
     },
@@ -117,7 +117,7 @@ const CartModal: React.FC<CartModalProps> = ({
       removeFromCart: "Remove from cart",
       closeCart: "Close cart",
       whatsappMessage:
-        "Hello, I would like to order the following items from El-Saudi jewelry:",
+        "Hello, I would like to order the following items from Jawhara Gold:",
       productDeleted: "This product has been deleted",
       cleanDeletedItems: "Remove Deleted Items",
     },
@@ -163,7 +163,7 @@ const CartModal: React.FC<CartModalProps> = ({
     const validItems = validatedItems.filter((item) => !item.isDeleted);
     if (validItems.length === 0) return;
 
-    const phoneNumber = "201067365567";
+    const phoneNumber = "201276898650";
     let message = `${t.whatsappMessage}\n\n`;
 
     validItems.forEach((item: any, index: number) => {
@@ -174,7 +174,7 @@ const CartModal: React.FC<CartModalProps> = ({
           : item.name_en || item.english_name || item.name || "Product";
 
       message += `${index + 1}. ${productName} (x${qty}) - $${(Math.ceil(item.price / 5) * 5 * qty).toLocaleString()}\n`;
-      message += `   🔗 https://elsaudi-jewelry.vercel.app/?product=${item.id}\n\n`;
+      message += `   🔗 https://jawhara-gold.vercel.app/?product=${item.id}\n\n`;
     });
 
     message += `*${t.total} $${calculateTotal().toLocaleString()}*`;

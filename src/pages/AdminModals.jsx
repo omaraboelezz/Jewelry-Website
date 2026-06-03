@@ -170,7 +170,7 @@ export const InvoiceModal = ({
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `elsaudi-jewelry-invoice-${Date.now()}.pdf`;
+      link.download = `jawhara-gold-invoice-${Date.now()}.pdf`;
       link.click();
       URL.revokeObjectURL(url);
     } catch {

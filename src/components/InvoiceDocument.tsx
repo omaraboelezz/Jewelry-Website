@@ -29,7 +29,7 @@ const rowAlt = '#1f160a';
 
 // ─── QR Code via free API (gold on dark) ─────────────────────────────────────
 const QR_URL =
-  'https://api.qrserver.com/v1/create-qr-code/?size=80x80&color=C9A84C&bgcolor=0d0a04&data=https://elsaudi-jewelry.vercel.app/';
+  'https://api.qrserver.com/v1/create-qr-code/?size=80x80&color=C9A84C&bgcolor=0d0a04&data=https://jawhara-gold.vercel.app//';
 
 // ─── Currency formatter ───────────────────────────────────────────────────────
 const fmt = (amount: number) => `${amount.toLocaleString('en-US')} EGP`;
@@ -232,13 +232,13 @@ const InvoiceDocument = ({
           </View>
 
           <View style={styles.headerCenter}>
-            <Text style={styles.brandName}>El-Saudi JEWELRY</Text>
+            <Text style={styles.brandName}>Jawhara Gold</Text>
             <Text style={styles.brandSub}>* LUXURY JEWELRY *</Text>
           </View>
 
           <View style={styles.headerRight}>
             <Image src={QR_URL} style={styles.qrImage} />
-            <Text style={styles.qrLabel}>elsaudi-jewelry</Text>
+            <Text style={styles.qrLabel}>jawhara-gold</Text>
           </View>
         </View>
 
@@ -389,18 +389,18 @@ const InvoiceDocument = ({
               {/* Phone Numbers */}
               <View style={{ alignItems: isAr ? 'flex-end' : 'flex-end' }}>
                 <Text style={{ color: gray, fontSize: 8, marginBottom: 3, fontFamily: 'Cairo' }}>
-                  {isAr ? '+ت : 201067365567' : 'Tel.: +201067365567'}  
+                  {isAr ? '+ت : 01276898650' : 'Tel.: 01276898650'}  
                 </Text>
               </View>
             </View>
 
             <Text style={styles.footerText}>
               {isAr
-                ? 'شكراً لثقتك في EL-SAUDI JEWELRY  — نلتزم بأعلى معايير الجودة'
-                : 'Thank you for choosing EL-SAUDI JEWELRY  — Committed to the highest quality standards'}
+                ? 'شكراً لثقتك في Jawhara Gold  — نلتزم بأعلى معايير الجودة'
+                : 'Thank you for choosing Jawhara Gold  — Committed to the highest quality standards'}
             </Text>
-            <Text style={styles.footerBrand}>* EL-SAUDI JEWELRY *</Text>
-            <Text style={styles.footerWebsite}>elsaudi-jewelry.vercel.app</Text>
+            <Text style={styles.footerBrand}>* Jawhara Gold *</Text>
+            <Text style={styles.footerWebsite}>jawhara-gold.vercel.app</Text>
           </View>
         </View>
 

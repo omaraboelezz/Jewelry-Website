@@ -199,7 +199,7 @@ const ProductModal = ({ product, isOpen, onClose, language = 'ar' }) => {
           : '';
 
         const whatsappText =
-          `✨ *El-Saudi jewelry* ✨\n` +
+          `✨ *Jawhara Gold* ✨\n` +
           `──────────\n\n` +
           `💎 *${productName}*\n\n` +
           safeDesc +
@@ -218,7 +218,7 @@ const ProductModal = ({ product, isOpen, onClose, language = 'ar' }) => {
 
       case 'instagram': {
         const instaText =
-          `✨ El-Saudi jewelry ✨\n` +
+          `✨ Jawhara Gold ✨\n` +
           `──────────\n\n` +
           `💎 ${productName}\n\n` +
           `💰 Price: $${product.price ? (Math.ceil(product.price / 5) * 5).toLocaleString() : 0}\n\n` +

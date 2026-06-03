@@ -33,13 +33,13 @@ const Hero = ({ language = 'ar', activeFilter, onFilterChange }: HeroProps) => {
 
   const texts: Texts = {
     ar: {
-      tagline: 'أناقة خالدة في كل قطعة',
+      tagline: 'قطعة تحمل قصة جمالك',
       gold: 'ذهب',
       silver: 'فضة',
       accessories: 'إكسسوارات'
     },
     en: {
-      tagline: 'Timeless Elegance in Every Piece',
+      tagline: 'Every Piece Tells Your Story',
       gold: 'Gold',
       silver: 'Silver',
       accessories: 'Accessories'
@@ -157,7 +157,7 @@ const Hero = ({ language = 'ar', activeFilter, onFilterChange }: HeroProps) => {
       <div className="hero-overlay"></div>
       <div ref={contentRef} className="hero-content">
         <div className="hero-content-inner">
-          <h1 className="hero-title">El-Saudi jewelry</h1>
+          <h1 className="hero-title">Jawhara Gold</h1>
           <p className="hero-tagline">{t.tagline}</p>
 
           {/* CTA Button that toggles filter options */}
