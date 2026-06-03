@@ -1,0 +1,143 @@
+/* Global Styles - Gold Store Theme */
+:root {
+  /* Gold-inspired color palette */
+  --gold-primary: #d4af37;
+  --gold-secondary: #f5deb3;
+  --champagne: #f7e7ce;
+  --beige: #f5f5dc;
+  --charcoal: #1a1a1a;
+  --dark-black: #0a0a0a;
+  --white: #ffffff;
+  --text-dark: #4a4a4a;
+  font-family: 'Amiri', serif;
+  line-height: 1.6;
+  font-weight: 400;
+  
+  color-scheme: light;
+  color: var(--charcoal);
+  background-color: var(--white);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--white);
+  color: var(--charcoal);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Amiri', serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--charcoal);
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: var(--gold-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--gold-secondary);
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Scrollbar styling - Auto-hide when not scrolling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-primary);
+  border-radius: 5px;
+  transition: opacity 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-secondary);
+}
+
+/* Auto-hide scrollbar - shows only when scrolling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+html:hover,
+html.scrolling {
+  scrollbar-color: var(--gold-primary) var(--beige);
+}
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar-thumb {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+html:hover::-webkit-scrollbar-thumb,
+html.scrolling::-webkit-scrollbar-thumb {
+  opacity: 1;
+}
+
+/* Text selection styling - Gold color */
+::selection {
+  background-color: #ffd900bc;
+  color: #1a1a1a;
+}
+
+::-moz-selection {
+  background-color: #ffd900bc;
+  color: #1a1a1a;
+}

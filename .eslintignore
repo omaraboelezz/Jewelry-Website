@@ -1,0 +1,5 @@
+# Ignore Django backend and Python virtual environment
+backend/
+node_modules/
+dist/
+build/

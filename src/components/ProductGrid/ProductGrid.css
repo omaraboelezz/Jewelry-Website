@@ -1,0 +1,101 @@
+/* Product Grid Section Styles */
+.product-grid-section {
+  padding: 5rem 2rem;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1500px; /* زاد من 1200px */
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1a1a1a;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #d4af37, #f5deb3);
+}
+
+/* Product Collection Grid Layout */
+.product-collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* زاد من 280px */
+  gap: 2.5rem;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+/* Ensure 3-4 columns on larger screens */
+@media (min-width: 1400px) {
+  .product-collection-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .product-collection-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .product-collection-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* No products message */
+.no-products-message {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #4a4a4a;
+  font-size: 1.1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .product-grid-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-collection-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* زاد من 240px */
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid-section {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-collection-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

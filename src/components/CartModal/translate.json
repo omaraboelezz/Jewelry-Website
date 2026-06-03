@@ -1,0 +1,34 @@
+{
+  "cart": {
+    "ar": {
+      "shoppingCart": "سلة التسوق",
+      "item": "عنصر",
+      "items": "عناصر",
+      "cartEmpty": "سلة التسوق فارغة",
+      "nothingAdded": "يبدو أنك لم تضف أي شيء بعد.",
+      "total": "الإجمالي:",
+      "connectToBuy": "اطلب عبر واتساب",
+      "removeFromCart": "إزالة من السلة",
+      "closeCart": "إغلاق السلة",
+      "whatsappMessage": "مرحباً، أود طلب العناصر التالية من El-Saudi jewelry:",
+      "productDeleted": "هذا المنتج تم حذفه",
+      "cleanDeletedItems": "إزالة المنتجات المحذوفة",
+      "someProductsDeleted": "بعض المنتجات تم حذفها ولن يتم تضمينها في الطلب"
+    },
+    "en": {
+      "shoppingCart": "Shopping Cart",
+      "item": "item",
+      "items": "items",
+      "cartEmpty": "Your cart is empty",
+      "nothingAdded": "Looks like you haven't added anything yet.",
+      "total": "Total:",
+      "connectToBuy": "Connect to Buy",
+      "removeFromCart": "Remove from cart",
+      "closeCart": "Close cart",
+      "whatsappMessage": "Hello, I would like to order the following items from El-Saudi jewelry:",
+      "productDeleted": "This product has been deleted",
+      "cleanDeletedItems": "Remove Deleted Items",
+      "someProductsDeleted": "Some products have been deleted and won't be included in the order"
+    }
+  }
+}
