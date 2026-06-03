@@ -255,7 +255,6 @@ const Home = ({ language, onLanguageChange, navigate }) => {
               />
             </ScrollReveal>
           ) : (
-            // ✅ لو مفيش sections، اعرض الـ Grid العادي
             <ScrollReveal delay={200}>
               <ProductGrid
                 language={language}
