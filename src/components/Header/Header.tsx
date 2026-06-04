@@ -75,8 +75,8 @@ const Header = ({
   const { wishlistCount } = useWishlist();
   const { cartCount } = useCart();
 
-  const SECTION_API_URL = "https://omarawad9.pythonanywhere.com/api/sections/";
-  const PRODUCTS_API_URL = "https://omarawad9.pythonanywhere.com/api/products/";
+  const SECTION_API_URL = "https://OmarElsayed49.pythonanywhere.com/api/sections/";
+  const PRODUCTS_API_URL = "https://OmarElsayed49.pythonanywhere.com/api/products/";
 
   // في الـ state:
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
@@ -181,7 +181,7 @@ const Header = ({
   };
 
   const openLocation = () => {
-    window.open("https://maps.app.goo.gl/9QRFR7vEsF17gERB7", "_blank");
+    window.open("https://maps.app.goo.gl/6LxwCqeDSfGT9YMj6", "_blank");
     closeDrawer();
   };
 

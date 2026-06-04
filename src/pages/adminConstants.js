@@ -1,8 +1,8 @@
 // ─── API URLs ───────────────────────────────────────────────────────────────
-export const API_URL        = "https://omarawad9.pythonanywhere.com/api/products/";
-export const SECTION_API_URL = "https://omarawad9.pythonanywhere.com/api/sections/";
-export const PRICES_API_URL  = "https://omarawad9.pythonanywhere.com/api/metal-prices/";
-export const BADGES_API_URL  = "https://omarawad9.pythonanywhere.com/api/badges/";
+export const API_URL        = "https://OmarElsayed49.pythonanywhere.com/api/products/";
+export const SECTION_API_URL = "https://OmarElsayed49.pythonanywhere.com/api/sections/";
+export const PRICES_API_URL  = "https://OmarElsayed49.pythonanywhere.com/api/metal-prices/";
+export const BADGES_API_URL  = "https://OmarElsayed49.pythonanywhere.com/api/badges/";
 export const CLOUDINARY_URL  = "https://api.cloudinary.com/v1_1/dpiwfb3sr/image/upload";
 
 // ─── Cloudinary ─────────────────────────────────────────────────────────────

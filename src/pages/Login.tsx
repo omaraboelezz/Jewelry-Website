@@ -16,7 +16,7 @@ const Login = ({ onLogin, language, onLanguageChange }: LoginProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // 🔗 Backend API URL
-  const API_URL = 'https://omarawad9.pythonanywhere.com/api';
+  const API_URL = 'https://OmarElsayed49.pythonanywhere.com/api';
 
   const texts = {
     ar: {

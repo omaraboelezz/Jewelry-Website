@@ -1,20 +1,17 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-// تعريف شكل المنتج الأساسي
 interface Product {
   id: number | string;
   name: string;
   price: number;
   image: string;
-  [key: string]: any; // للسماح بأي خصائص إضافية
+  [key: string]: any; 
 }
 
-// تعريف عنصر السلة (المنتج + الكمية)
 export interface CartItem extends Product {
   quantity: number;
 }
 
-// تعريف الوظائف المتاحة في السلة
 interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: Product, quantity?: number) => void;
@@ -38,17 +35,15 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   });
 
-  // حفظ البيانات في localStorage عند أي تغيير
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // ✅ دالة تنضيف المنتجات المحذوفة من الـ API
   const cleanupDeletedProducts = async () => {
     if (cartItems.length === 0) return;
 
     try {
-      const response = await fetch('https://omarawad9.pythonanywhere.com/api/products/');
+      const response = await fetch('https://OmarElsayed49.pythonanywhere.com/api/products/');
 
       if (!response.ok) {
         return;
@@ -57,10 +52,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const existingProducts = await response.json();
       const existingIds = new Set(existingProducts.map((p: any) => p.id));
 
-      // ✅ فلترة المنتجات الموجودة فعليًا فقط
       const validCartItems = cartItems.filter(item => existingIds.has(item.id));
 
-      // ✅ لو في منتجات اتمسحت، حدث الـ Cart
       if (validCartItems.length !== cartItems.length) {
         const removedCount = cartItems.length - validCartItems.length;
         setCartItems(validCartItems);
@@ -70,34 +63,28 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // ✅ تشغيل التنضيف عند فتح الصفحة (مرة واحدة)
   useEffect(() => {
     if (cartItems.length > 0) {
       cleanupDeletedProducts();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // يشتغل مرة واحدة فقط عند التحميل
+  }, []); 
 
-  // دالة إضافة منتج للسلة
   const addToCart = (product: Product, quantity: number = 1) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
 
       if (existingItem) {
-        // لو موجود بالفعل، زود الكمية
         return prevItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
-        // لو جديد، ضيفه مع الكمية
         return [...prevItems, { ...product, quantity }];
       }
     });
   };
 
-  // دالة حذف منتج
   const removeFromCart = (id: number | string) => {
     setCartItems(prevItems =>
       prevItems
@@ -106,7 +93,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             if (item.quantity > 1) {
               return { ...item, quantity: item.quantity - 1 }; // نقص وحدة واحدة
             } else {
-              return null; // لو الكمية 1 نمسح المنتج
+              return null;
             }
           }
           return item;

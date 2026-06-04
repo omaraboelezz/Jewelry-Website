@@ -3,7 +3,7 @@
  * Handles all API calls to the backend with JWT Authentication
  */
 
-const API_BASE_URL = 'https://omarawad9.pythonanywhere.com/api';
+const API_BASE_URL = 'https://OmarElsayed49.pythonanywhere.com/api';
 
 /**
  * Helper function to make authenticated API calls (for admin only)

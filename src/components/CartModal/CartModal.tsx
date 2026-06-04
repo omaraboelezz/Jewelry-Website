@@ -57,7 +57,7 @@ const CartModal: React.FC<CartModalProps> = ({
   const validateCartItems = async () => {
     try {
       const response = await fetch(
-        "https://omarawad9.pythonanywhere.com/api/products/",
+        "https://OmarElsayed49.pythonanywhere.com/api/products/",
       );
       const existingProducts = await response.json();
       const existingMap = new Map(existingProducts.map((p: any) => [p.id, p]));

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 let cachedBadges = null;
 let fetchPromise = null;
 
-const BADGES_API_URL = "https://omarawad9.pythonanywhere.com/api/badges/";
+const BADGES_API_URL = "https://OmarElsayed49.pythonanywhere.com/api/badges/";
 
 const useBadges = () => {
   const [badges, setBadges] = useState(cachedBadges || []);
@@ -27,8 +27,7 @@ const useBadges = () => {
           }
         })
         .catch(err => {
-          // Retry logic can be added here if necessary
-        })
+          console.error("Error fetching badges:", err);})
         .finally(() => {
           setLoading(false);
         });

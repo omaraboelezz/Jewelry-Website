@@ -32,7 +32,7 @@ const Home = ({ language, onLanguageChange, navigate }) => {
 
 
 
-  const SECTION_API_URL = 'https://omarawad9.pythonanywhere.com/api/sections/';
+  const SECTION_API_URL = 'https://OmarElsayed49.pythonanywhere.com/api/sections/';
 
 
   const handleLogout = () => {

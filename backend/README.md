@@ -34,7 +34,7 @@
 
 ## 📍 Access Points
 
-- **API:** https://omarawad9.pythonanywhere.com/api/products/
+- **API:** https://OmarElsayed49.pythonanywhere.com/api/products/
 - **Admin Panel:** http://localhost:8000/admin/
 - **Frontend Admin:** http://localhost:5173/admin
 

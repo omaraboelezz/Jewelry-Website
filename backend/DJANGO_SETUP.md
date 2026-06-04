@@ -114,7 +114,7 @@ Starting development server at http://127.0.0.1:8000/
 
 ### Step 7: Test the API
 
-Visit: https://omarawad9.pythonanywhere.com/api/products/
+Visit: https://OmarElsayed49.pythonanywhere.com/api/products/
 
 You should see an empty array `[]` if no products exist, or a JSON array of products.
 
