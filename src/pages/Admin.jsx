@@ -175,9 +175,8 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
         const response = await fetch(SECTION_API_URL);
         const data = await response.json();
         if (!data.some((s) => s.is_featured)) {
-          const res = await fetch(SECTION_API_URL, {
+          const res = await fetchWithAuth(SECTION_API_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               title_ar: "المنتجات المميزة",
               title_en: "Featured Products",
@@ -335,7 +334,7 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
 
       const method = editingProductId ? "PUT" : "POST";
       const url = editingProductId ? `${API_URL}${editingProductId}/` : API_URL;
-      const response = await fetch(url, { method, body: form });
+      const response = await fetchWithAuth(url, { method, body: form });
 
       let data;
       try { data = await response.json(); }
@@ -406,7 +405,7 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
           if (!isFeatured && featuredSection) {
             const patchData = new FormData();
             patchData.append("section", featuredSection.id);
-            const response = await fetch(`${API_URL}${id}/`, { method: "PATCH", body: patchData });
+            const response = await fetchWithAuth(`${API_URL}${id}/`, { method: "PATCH", body: patchData });
             if (response.ok) {
               Modal.success({
                 title: language === "ar" ? "ℹ️ تم النقل!" : "ℹ️ Moved!",
@@ -422,7 +421,7 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
             return;
           }
 
-          const response = await fetch(`${API_URL}${id}/`, { method: "DELETE" });
+          const response = await fetchWithAuth(`${API_URL}${id}/`, { method: "DELETE" });
           if (response.ok) {
             setProducts((prev) => prev.filter((p) => (p._id || p.id) !== id));
             Modal.success({
@@ -458,7 +457,7 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
     try {
       const form = new FormData();
       form.append("section", newSectionForMove);
-      const response = await fetch(`${API_URL}${productToMove.id || productToMove._id}/`, { method: "PATCH", body: form });
+      const response = await fetchWithAuth(`${API_URL}${productToMove.id || productToMove._id}/`, { method: "PATCH", body: form });
       if (response.ok) {
         Modal.success({ title: language === "ar" ? "🎉 تم النقل!" : "🎉 Moved!", content: t.productMoved, centered: true, okText: language === "ar" ? "حسناً" : "OK" });
         closeMoveModal();
@@ -480,9 +479,8 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
     try {
-      const response = await fetch(SECTION_API_URL, {
+      const response = await fetchWithAuth(SECTION_API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(sectionFormData),
       });
       const data = await response.json();
@@ -559,11 +557,11 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
               sectionProducts.map((p) => {
                 const patchData = new FormData();
                 patchData.append("section", featuredSection.id);
-                return fetch(`${API_URL}${p.id || p._id}/`, { method: "PATCH", body: patchData });
+                return fetchWithAuth(`${API_URL}${p.id || p._id}/`, { method: "PATCH", body: patchData });
               })
             );
           }
-          const response = await fetch(`${SECTION_API_URL}${id}/`, { method: "DELETE" });
+          const response = await fetchWithAuth(`${SECTION_API_URL}${id}/`, { method: "DELETE" });
           if (response.ok) {
             setSections((prev) => prev.filter((s) => s.id !== id));
             Modal.success({
@@ -603,9 +601,8 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
       return;
     }
     try {
-      const response = await fetch(`${SECTION_API_URL}${editingSectionId}/`, {
+      const response = await fetchWithAuth(`${SECTION_API_URL}${editingSectionId}/`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ order: editOrderValue }),
       });
       const data = await response.json();
@@ -626,9 +623,8 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
   const handleEditSectionName = async () => {
     if (!editingSectionName.title_ar.trim() || !editingSectionName.title_en.trim()) return;
     try {
-      const response = await fetch(`${SECTION_API_URL}${editingSectionName.id}/`, {
+      const response = await fetchWithAuth(`${SECTION_API_URL}${editingSectionName.id}/`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title_ar: editingSectionName.title_ar.trim(), title_en: editingSectionName.title_en.trim() }),
       });
       if (response.ok) {

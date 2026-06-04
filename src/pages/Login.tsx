@@ -68,8 +68,12 @@ const Login = ({ onLogin, language, onLanguageChange }: LoginProps) => {
       const data = await response.json();
 
       if (response.ok && data.success) {
+        // Handle both JWT tokens (access_token/refresh_token) and AdminSession tokens (token)
         if (data.access_token) {
           localStorage.setItem('accessToken', data.access_token);
+        } else if (data.token) {
+          // Backend returns a plain session token
+          localStorage.setItem('accessToken', data.token);
         }
 
         if (data.refresh_token) {
