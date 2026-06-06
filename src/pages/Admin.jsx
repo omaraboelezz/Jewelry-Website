@@ -128,7 +128,7 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
   // ── Fetch helpers ──────────────────────────────────────────────────────────
   const fetchProducts = async () => {
     try {
-      const response = await fetch(API_URL, { headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
+      const response = await fetch(API_URL, { cache: 'no-store' });
       const contentType = response.headers.get("content-type");
       if (!contentType?.includes("application/json")) return;
       const data = await response.json();
@@ -138,7 +138,7 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
 
   const fetchSections = async () => {
     try {
-      const response = await fetch(SECTION_API_URL, { headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
+      const response = await fetch(SECTION_API_URL, { cache: 'no-store' });
       const data = await response.json();
       if (Array.isArray(data)) setSections(data);
     } catch { /* silent */ }
@@ -146,14 +146,14 @@ const Admin = ({ language, onLanguageChange, navigate, onLogout }) => {
 
   const fetchPrices = async () => {
     try {
-      const response = await fetch(PRICES_API_URL, { headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
+      const response = await fetch(PRICES_API_URL, { cache: 'no-store' });
       setAllPrices(await response.json());
     } catch { /* silent */ }
   };
 
   const fetchBadges = async () => {
     try {
-      const response = await fetch(BADGES_API_URL, { headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
+      const response = await fetch(BADGES_API_URL, { cache: 'no-store' });
       const data = await response.json();
       if (Array.isArray(data)) setCustomBadges(data);
     } catch { /* silent */ }
