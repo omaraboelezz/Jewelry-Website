@@ -632,11 +632,21 @@ def badge_list(request):
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@api_view(['DELETE'])
+@api_view(['DELETE', 'PATCH'])
 def badge_detail(request, pk):
     try:
         badge = Badge.objects.get(pk=pk)
-        badge.delete()
-        return Response({'message': 'Badge deleted'}, status=status.HTTP_204_NO_CONTENT)
+        
+        if request.method == 'DELETE':
+            badge.delete()
+            return Response({'message': 'Badge deleted'}, status=status.HTTP_204_NO_CONTENT)
+            
+        elif request.method == 'PATCH':
+            serializer = BadgeSerializer(badge, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response({'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            
     except Badge.DoesNotExist:
         return Response({'error': 'Badge not found'}, status=status.HTTP_404_NOT_FOUND)
