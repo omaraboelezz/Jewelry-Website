@@ -40,14 +40,32 @@ def verify_admin_token(request):
         from rest_framework_simplejwt.authentication import JWTAuthentication
         jwt_authenticator = JWTAuthentication()
         validated_token = jwt_authenticator.get_validated_token(token)
-        user = jwt_authenticator.get_user(validated_token)
         
-        if user:
-            # ننشئ كائن وهمي (Mock) لكي لا يتعطل الكود في ملف views.py
+        # استخراج البيانات من الـ JWT claims مباشرة
+        # لأن الـ accounts app بينشئ JWT بدون Django User
+        username = validated_token.get('username', None)
+        role = validated_token.get('role', None)
+        
+        if username:
             class MockSession:
-                def __init__(self, user):
-                    self.admin_user = user
-            return MockSession(user)
+                def __init__(self, username, role):
+                    class MockAdmin:
+                        def __init__(self, username, role):
+                            self.username = username
+                            self.role = role or 'admin'
+                    self.admin_user = MockAdmin(username, role)
+            return MockSession(username, role)
+        
+        # فولباك: جرب get_user لو مفيش username في الـ claims
+        try:
+            user = jwt_authenticator.get_user(validated_token)
+            if user:
+                class MockSession:
+                    def __init__(self, user):
+                        self.admin_user = user
+                return MockSession(user)
+        except:
+            pass
     except:
         return None
 

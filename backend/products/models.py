@@ -55,6 +55,14 @@ class Product(models.Model):
         verbose_name="Product Type"
     )
 
+    karat = models.CharField(
+        max_length=10, 
+        choices=[('24K', '24K (Gold)'), ('21K', '21K (Gold)'), ('18K', '18K (Gold)'), ('999', '999 (Silver)'), ('925', '925 (Silver)'), ('800', '800 (Silver)')], 
+        default='21K', 
+        blank=True, 
+        null=True, 
+        verbose_name="Karat/Fineness"
+    )
 
     weight = models.DecimalField(
         max_digits=6, 
@@ -103,10 +111,21 @@ class Product(models.Model):
 
         metal_prices = MetalPrice.get_current_prices()
         
+        price_per_gram = 0
         if self.type == 'gold':
-            price_per_gram = metal_prices.gold_price_per_gram
+            if self.karat == '24K':
+                price_per_gram = metal_prices.karat_24_buy
+            elif self.karat == '18K':
+                price_per_gram = metal_prices.karat_18_buy
+            else:
+                price_per_gram = metal_prices.karat_21_buy
         else:  # silver
-            price_per_gram = metal_prices.silver_price_per_gram
+            if self.karat == '999':
+                price_per_gram = metal_prices.fine_999_buy
+            elif self.karat == '800':
+                price_per_gram = metal_prices.fine_800_buy
+            else:
+                price_per_gram = metal_prices.fine_925_buy
         
         if self.weight < 3:
             # 🔵 وزن خفيف: مصنعية ثابتة للقطعة
@@ -128,19 +147,18 @@ class MetalPrice(models.Model):
     """
     💰 تخزين أسعار الذهب والفضة اليومية
     """
-    gold_price_per_gram = models.DecimalField(
-        max_digits=10, 
-        decimal_places=2, 
-        default=0,
-        verbose_name="Gold Price per Gram ($)"
-    )
-    
-    silver_price_per_gram = models.DecimalField(
-        max_digits=10, 
-        decimal_places=2, 
-        default=0,
-        verbose_name="Silver Price per Gram ($)"
-    )
+    karat_24_buy = models.IntegerField(default=0)
+    karat_24_sell = models.IntegerField(default=0)
+    karat_21_buy = models.IntegerField(default=0)
+    karat_21_sell = models.IntegerField(default=0)
+    karat_18_buy = models.IntegerField(default=0)
+    karat_18_sell = models.IntegerField(default=0)
+    fine_999_buy = models.IntegerField(default=0)
+    fine_999_sell = models.IntegerField(default=0)
+    fine_925_buy = models.IntegerField(default=0)
+    fine_925_sell = models.IntegerField(default=0)
+    fine_800_buy = models.IntegerField(default=0)
+    fine_800_sell = models.IntegerField(default=0)
     
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -150,7 +168,7 @@ class MetalPrice(models.Model):
         verbose_name_plural = 'Metal Prices'
     
     def __str__(self):
-        return f"Gold: ${self.gold_price_per_gram}/g | Silver: ${self.silver_price_per_gram}/g"
+        return f"Gold 21K: ${self.karat_21_buy}/g | Silver 999: ${self.fine_999_buy}/g"
     
     @staticmethod
     def get_current_prices():
@@ -158,27 +176,27 @@ class MetalPrice(models.Model):
         price_obj, created = MetalPrice.objects.get_or_create(id=1)
         return price_obj
 
+    def update_all_products(self):
+        """
+        🔄 تحديث أسعار كل المنتجات بعد تغيير أسعار الذهب/الفضة
+        """
+        # تحديث منتجات الذهب
+        gold_products = Product.objects.filter(type='gold')
+        for product in gold_products:
+            product.price = product.calculate_price()
+            product.save()
+        
+        # تحديث منتجات الفضة
+        silver_products = Product.objects.filter(type='silver')
+        for product in silver_products:
+            product.price = product.calculate_price()
+            product.save()
+        
+        return {
+            'gold_updated': gold_products.count(),
+            'silver_updated': silver_products.count()
+        }
 
-def update_all_products(self):
-    """
-    🔄 تحديث أسعار كل المنتجات بعد تغيير أسعار الذهب/الفضة
-    """
-    # تحديث منتجات الذهب
-    gold_products = Product.objects.filter(type='gold')
-    for product in gold_products:
-        product.price = product.calculate_price()
-        product.save(update_fields=['price', 'updated_at'])
-    
-    # تحديث منتجات الفضة
-    silver_products = Product.objects.filter(type='silver')
-    for product in silver_products:
-        product.price = product.calculate_price()
-        product.save(update_fields=['price', 'updated_at'])
-    
-    return {
-        'gold_updated': gold_products.count(),
-        'silver_updated': silver_products.count()
-    }
 # ==================== ADMIN AUTHENTICATION MODELS ====================
 
 class AdminUser(models.Model):
